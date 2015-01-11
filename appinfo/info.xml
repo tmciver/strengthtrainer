@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<info>
+    <id>strengthtrainer</id>
+    <name>Strength Trainer</name>
+    <description>App to track strength training history.</description>
+    <licence>AGPL</licence>
+    <author>Tim McIver</author>
+    <version>0.0.1</version>
+    <requiremin>7.0.3</requiremin>
+</info>
