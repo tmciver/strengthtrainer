@@ -19,9 +19,12 @@ namespace OCA\StrengthTrainer\AppInfo;
  * The controller class has to be registered in the application.php file since
  * it's instantiated in there
  */
-$application = new Application();
+/* $application = new Application(); */
 
-$application->registerRoutes($this, array('routes' => array(
-	array('name' => 'page#index', 'url' => '/', 'verb' => 'GET'),
-    array('name' => 'page#do_echo', 'url' => '/echo', 'verb' => 'POST'),
-)));
+/* $application->registerRoutes($this, array('routes' => array( */
+/* 							    array('name' => 'sets#index', 'url' => '/', 'verb' => 'GET'), */
+/* ))); */
+
+return array('routes' => array(array('name' => 'sets#index',
+				     'url' => '/',
+				     'verb' => 'GET'),));
