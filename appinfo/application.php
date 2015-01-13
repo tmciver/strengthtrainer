@@ -11,15 +11,12 @@
 
 namespace OCA\StrengthTrainer\AppInfo;
 
-
 use \OCP\AppFramework\App;
 use \OCP\IContainer;
 
-use \OCA\StrengthTrainer\Controller\PageController;
-
+use \OCA\StrengthTrainer\Controller\SetsController;
 
 class Application extends App {
-
 
 	public function __construct (array $urlParams=array()) {
 		parent::__construct('strengthtrainer', $urlParams);
@@ -29,23 +26,11 @@ class Application extends App {
 		/**
 		 * Controllers
 		 */
-		$container->registerService('PageController', function(IContainer $c) {
-			return new PageController(
-				$c->query('AppName'), 
-				$c->query('Request'),
-				$c->query('UserId')
+		$container->registerService('SetsController', function(IContainer $c) {
+			return new SetsController(
+				$c->query('AppName'),
+				$c->query('Request')
 			);
 		});
-
-
-		/**
-		 * Core
-		 */
-		$container->registerService('UserId', function(IContainer $c) {
-			return \OCP\User::getUser();
-		});		
-		
 	}
-
-
 }

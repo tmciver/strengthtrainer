@@ -25,6 +25,7 @@ class SetsController extends Controller {
 
   /**
    * @NoAdminRequired
+   * @NoCSRFRequired
    */
   public function index() {
     return new TemplateResponse('strengthtrainer', 'main');
