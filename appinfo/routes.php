@@ -25,6 +25,6 @@ namespace OCA\StrengthTrainer\AppInfo;
 /* 							    array('name' => 'sets#index', 'url' => '/', 'verb' => 'GET'), */
 /* ))); */
 
-return array('routes' => array(array('name' => 'sets#index',
+return array('routes' => array(array('name' => 'page#index',
 				     'url' => '/',
 				     'verb' => 'GET'),));

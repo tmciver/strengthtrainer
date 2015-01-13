@@ -14,6 +14,7 @@ namespace OCA\StrengthTrainer\AppInfo;
 use \OCP\AppFramework\App;
 use \OCP\IContainer;
 
+use \OCA\StrengthTrainer\Controller\PageController;
 use \OCA\StrengthTrainer\Controller\SetsController;
 
 class Application extends App {
@@ -26,6 +27,12 @@ class Application extends App {
 		/**
 		 * Controllers
 		 */
+		$container->registerService('PageController', function(IContainer $c) {
+			return new PageController(
+				$c->query('AppName'),
+				$c->query('Request')
+			);
+		});
 		$container->registerService('SetsController', function(IContainer $c) {
 			return new SetsController(
 				$c->query('AppName'),
