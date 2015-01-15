@@ -13,7 +13,7 @@ namespace OCA\StrengthTrainer\Controller;
 
 
 use \OCP\IRequest;
-use \OCP\AppFramework\Http\TemplateResponse;
+use \OCP\AppFramework\Http\RedirectResponse;
 use \OCP\AppFramework\Controller;
 
 class PageController extends Controller {
@@ -27,6 +27,6 @@ class PageController extends Controller {
      * @NoCSRFRequired
      */
     public function index() {
-        return new TemplateResponse('strengthtrainer', 'main');  // templates/main.php
+        return new RedirectResponse('/index.php/apps/strengthtrainer/sets');
     }
 }

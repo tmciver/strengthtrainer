@@ -28,7 +28,7 @@ class SetsController extends Controller {
    * @NoCSRFRequired
    */
   public function index() {
-    return new TemplateResponse('strengthtrainer', 'main');
+      return new TemplateResponse('strengthtrainer', 'main');  // templates/main.php
   }
 
   /**
