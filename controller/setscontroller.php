@@ -17,18 +17,24 @@ use \OCP\AppFramework\Http\TemplateResponse;
 use \OCP\AppFramework\Http\DataResponse;
 use \OCP\AppFramework\Controller;
 
+use \OCA\StrengthTrainer\Db\Lift;
+use \OCA\StrengthTrainer\Db\LiftMapper;
+
 class SetsController extends Controller {
 
-  public function __construct($AppName, IRequest $request) {
-    parent::__construct($AppName, $request);
-  }
+    private $mapper;
+
+    public function __construct($AppName, IRequest $request, LiftMapper $liftmapper) {
+        parent::__construct($AppName, $request);
+        $this->mapper = $liftmapper;
+    }
 
   /**
    * @NoAdminRequired
    * @NoCSRFRequired
    */
   public function index() {
-      return new TemplateResponse('strengthtrainer', 'main');  // templates/main.php
+      return new TemplateResponse('strengthtrainer', 'main', $this->mapper->findAll());  // templates/main.php
   }
 
   /**
