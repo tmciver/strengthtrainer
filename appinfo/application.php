@@ -16,6 +16,7 @@ use \OCP\IContainer;
 
 use \OCA\StrengthTrainer\Controller\PageController;
 use \OCA\StrengthTrainer\Controller\SetsController;
+use \OCA\StrengthTrainer\Db\LiftMapper;
 
 class Application extends App {
 
@@ -36,8 +37,14 @@ class Application extends App {
 		$container->registerService('SetsController', function(IContainer $c) {
 			return new SetsController(
 				$c->query('AppName'),
-				$c->query('Request')
+				$c->query('Request'),
+                $c->query('LiftMapper')
 			);
 		});
+        $container->registerService('LiftMapper', function($c) {
+            return new LiftMapper(
+                $c->query('ServerContainer')->getDb()
+            );
+        });
 	}
 }
