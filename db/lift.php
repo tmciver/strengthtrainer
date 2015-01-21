@@ -9,6 +9,6 @@ class Lift extends Entity {
     protected $name;
 
     public function getName() {
-        return $name;
+        return $this->name;
     }
 }

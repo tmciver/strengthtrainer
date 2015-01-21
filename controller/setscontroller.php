@@ -34,7 +34,7 @@ class SetsController extends Controller {
    * @NoCSRFRequired
    */
   public function index() {
-      return new TemplateResponse('strengthtrainer', 'main', $this->mapper->findAll());  // templates/main.php
+      return new TemplateResponse('strengthtrainer', 'main', ['lifts' => $this->mapper->findAll()]);  // templates/main.php
   }
 
   /**

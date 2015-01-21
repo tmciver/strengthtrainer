@@ -1,12 +1,13 @@
 
 <div>
     <h3>Lifts</h3>
-<?php print_r(array_keys($_)); ?>
-    <table>
+    <table border="1">
         <tr><th>ID</th><th>Lift Name</th></tr>
-        <?php foreach($_ as $lift) { ?>
-            <tr><?php p($lift->getId()); ?></tr>
-            <tr><?php p($lift->getName()); ?></tr>
+        <?php foreach($_['lifts'] as $lift) { ?>
+            <tr>
+                <td><?php p($lift->getId()); ?></td>
+                <td><?php p($lift->getName()); ?></td>
+            </tr>
         <?php
         }?>
     </table>
