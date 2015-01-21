@@ -18,8 +18,8 @@ use \OCP\AppFramework\Controller;
 
 class PageController extends Controller {
 
-    public function __construct($appName, IRequest $request){
-        parent::__construct($appName, $request);
+    public function __construct($AppName, IRequest $request){
+        parent::__construct($AppName, $request);
     }
 
     /**

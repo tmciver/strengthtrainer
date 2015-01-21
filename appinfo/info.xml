@@ -6,5 +6,6 @@
     <licence>AGPL</licence>
     <author>Tim McIver</author>
     <version>0.0.2</version>
+    <namespace>StrengthTrainer</namespace>
     <requiremin>7.0.3</requiremin>
 </info>
