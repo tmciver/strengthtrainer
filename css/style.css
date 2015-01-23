@@ -1,3 +1,19 @@
-#hello {
-	color: red;
+h1 {
+    font-size: 2em;
+    padding: 0.5em;
+}
+
+table {
+    width: 100%;
+    border-collapse:collapse;
+}
+
+table tr {
+    font-size: 1.3em;
+    height: 35px;
+    border-bottom: 1px solid #eee;
+}
+
+table th {
+    color: #999;
 }
