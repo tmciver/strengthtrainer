@@ -18,7 +18,7 @@ use \OCP\AppFramework\Controller;
 
 class PageController extends Controller {
 
-    public function __construct($AppName, IRequest $request){
+    public function __construct($AppName, IRequest $request) {
         parent::__construct($AppName, $request);
     }
 
@@ -27,6 +27,6 @@ class PageController extends Controller {
      * @NoCSRFRequired
      */
     public function index() {
-        return new RedirectResponse('/index.php/apps/strengthtrainer/sets');
+        return new RedirectResponse('/index.php/apps/strengthtrainer/lifts');
     }
 }
