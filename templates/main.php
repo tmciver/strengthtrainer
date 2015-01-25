@@ -10,7 +10,12 @@
 
 	<div id="app-content">
 		<div id="app-content-wrapper">
-            <?php print_unescaped($this->inc('part.content')); ?>
+		    <!-- <pre><?php print_r($_); ?></pre> -->
+		    <?php if (array_key_exists('lifts', $_)) {
+			print_unescaped($this->inc('lifts.content'));
+		    } else if (array_key_exists('sets', $_)) {
+			print_unescaped($this->inc('sets.content'));
+		    }?>
 		</div>
 	</div>
 </div>

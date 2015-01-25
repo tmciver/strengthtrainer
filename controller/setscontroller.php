@@ -17,10 +17,16 @@ use \OCP\AppFramework\Http\TemplateResponse;
 use \OCP\AppFramework\Http\DataResponse;
 use \OCP\AppFramework\Controller;
 
+use \OCA\StrengthTrainer\Db\Set;
+use \OCA\StrengthTrainer\Db\SetMapper;
+
 class SetsController extends Controller {
 
-    public function __construct($AppName, IRequest $request) {
+    private $mapper;
+
+    public function __construct($AppName, IRequest $request, SetMapper $setMapper) {
         parent::__construct($AppName, $request);
+        $this->mapper = $setMapper;
     }
 
   /**
@@ -28,6 +34,7 @@ class SetsController extends Controller {
    * @NoCSRFRequired
    */
   public function index() {
+      return new TemplateResponse('strengthtrainer', 'main', ['sets' => $this->mapper->findAll()]);  // templates/main.php
   }
 
   /**

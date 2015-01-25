@@ -22,6 +22,7 @@ namespace OCA\StrengthTrainer\AppInfo;
 return [
     'routes' => [
         ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
-        ['name' => 'lift#index', 'url' => '/lifts', 'verb' => 'GET']
+        ['name' => 'lift#index', 'url' => '/lifts', 'verb' => 'GET'],
+        ['name' => 'sets#index', 'url' => '/sets', 'verb' => 'GET']
     ]
 ];

@@ -24,4 +24,39 @@
             </field>
         </declaration>
     </table>
+    <table>
+        <name>*dbprefix*strengthtrainer_set</name>
+        <declaration>
+            <field>
+                <name>id</name>
+                <type>integer</type>
+                <notnull>true</notnull>
+                <autoincrement>true</autoincrement>
+                <unsigned>true</unsigned>
+                <primary>true</primary>
+                <length>8</length>
+            </field>
+	    <field>
+	      <name>date</name>
+	      <type>date</type>
+	      <notnull>true</notnull>
+	    </field>
+            <field>
+	      <!-- Foreign key into lift table -->
+                <name>lift_id</name>
+                <type>integer</type>
+                <notnull>true</notnull>
+            </field>
+	    <field>
+	      <name>num_sets</name>
+	      <type>integer</type>
+	      <notnull>true</notnull>
+	    </field>
+	    <field>
+	      <name>num_reps</name>
+	      <type>integer</type>
+	      <notnull>true</notnull>
+	    </field>
+        </declaration>
+    </table>
 </database>
