@@ -12,7 +12,6 @@
 
     liftManager.add = function() {
 	var liftName = $('#liftname').val()
-	console.log("Lift name is: " + liftName)
 	if (liftName) {
 	    var url = OC.generateUrl('/apps/strengthtrainer/lifts');
 	    var data = {
@@ -25,8 +24,9 @@
 		data: JSON.stringify(data)
 	    }).done(function (response) {
 		var newRow = "<tr><td>" + liftName + "</td></tr>"
-		console.log(response)
-		$('#liftstable > tr:last').before(newRow);
+		$('#liftstable tr:last').before(newRow);
+		// clear the text box
+		$('#liftname').val('')
 	    });
 	}
     }
