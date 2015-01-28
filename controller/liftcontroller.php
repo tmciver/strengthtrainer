@@ -48,12 +48,14 @@ class LiftController extends Controller {
 
   /**
    * @NoAdminRequired
+   * @NoCSRFRequired
    *
-   * @param string $title
-   * @param string $content
+   * @param string $name name of lift
    */
-  public function create($title, $content) {
-    // empty for now
+  public function create($name) {
+      $lift = new Lift();
+      $lift->setName($name);
+      return new DataResponse($this->mapper->insert($lift));
   }
 
   /**
@@ -63,9 +65,9 @@ class LiftController extends Controller {
    * @param string $title
    * @param string $content
    */
-  public function update($id, $title, $content) {
-    // empty for now
-  }
+    // public function update($id, $title, $content) {
+  //   // empty for now
+  // }
 
   /**
    * @NoAdminRequired

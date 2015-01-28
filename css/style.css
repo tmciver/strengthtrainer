@@ -8,12 +8,21 @@ table {
     border-collapse:collapse;
 }
 
-table tr {
+tr {
     font-size: 1.3em;
     height: 35px;
     border-bottom: 1px solid #eee;
 }
 
-table th {
+tr.last {
+    border-bottom: none;
+}
+
+td {
+    padding: 0.5em;
+}
+
+th {
     color: #999;
+    padding: 0.5em;
 }

@@ -1,14 +1,13 @@
-
 <div>
     <h1>Lifts</h1>
-    <table border="1">
-        <tr><th>ID</th><th>Lift Name</th></tr>
+    <table id="liftstable">
+        <tr><th>Lift Name</th></tr>
         <?php foreach($_['lifts'] as $lift) { ?>
             <tr>
-		<td><?php p($lift->getId()); ?></td>
 		<td><?php p($lift->getName()); ?></td>
             </tr>
         <?php
         }?>
+	<tr class="last"><td><input type="text" id="liftname"><input type="button" value="Add" id="addliftbutton"></td></tr>
     </table>
 </div>

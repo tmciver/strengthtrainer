@@ -11,4 +11,8 @@ class Lift extends Entity {
     public function getName() {
         return $this->name;
     }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
 }
