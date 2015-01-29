@@ -25,9 +25,10 @@
 	    }).done(function (response) {
 		var newRow = "<tr><td>" + liftName + "</td></tr>"
 		$('#liftstable tr:last').before(newRow);
-		// clear the text box
-		$('#liftname').val('')
 	    });
+
+	    // clear the text box
+	    $('#liftname').val('')
 	}
     }
 

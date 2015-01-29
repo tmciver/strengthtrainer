@@ -13,8 +13,10 @@ namespace OCA\StrengthTrainer\Controller;
 
 
 use \OCP\IRequest;
+use \OCP\ILogger;
 use \OCP\AppFramework\Http\TemplateResponse;
 use \OCP\AppFramework\Http\DataResponse;
+use \OCP\AppFramework\Http;
 use \OCP\AppFramework\Controller;
 
 use \OCA\StrengthTrainer\Db\Lift;
@@ -23,10 +25,12 @@ use \OCA\StrengthTrainer\Db\LiftMapper;
 class LiftController extends Controller {
 
     private $mapper;
+    private $logger;
 
-    public function __construct($AppName, IRequest $request, LiftMapper $liftmapper) {
+    public function __construct($AppName, IRequest $request, ILogger $logger, LiftMapper $liftmapper) {
         parent::__construct($AppName, $request);
         $this->mapper = $liftmapper;
+        $this->logger = $logger;
     }
 
   /**
@@ -53,9 +57,25 @@ class LiftController extends Controller {
    * @param string $name name of lift
    */
   public function create($name) {
-      $lift = new Lift();
-      $lift->setName($name);
-      return new DataResponse($this->mapper->insert($lift));
+      // make sure a lift with this name does not already exist
+      $exists = false;
+      $lifts =  $this->mapper->findAll();
+      foreach ($lifts as $l) {
+          if ($l->getName() === $name) {
+              $exists = true;
+              break;
+          }
+      }
+
+      if ($exists) {
+          $response = new DataResponse([], Http::STATUS_CONFLICT);
+      } else {
+          $lift = new Lift();
+          $lift->setName($name);
+          $response = new DataResponse($this->mapper->insert($lift));
+      }
+
+      return $response;
   }
 
   /**
