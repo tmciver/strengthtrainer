@@ -19,10 +19,10 @@ tr.last {
 }
 
 td {
-    padding: 0.5em;
+    padding: 0.5em 1.0em;
 }
 
 th {
     color: #999;
-    padding: 0.5em;
+    padding: 0.5em 1.0em;
 }
