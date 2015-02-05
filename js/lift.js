@@ -11,7 +11,7 @@
 (function (liftManager, $, OC) {
 
     liftManager.add = function() {
-	var liftName = $('#liftname').val()
+	var liftName = $('#lift-name').val()
 	if (liftName) {
 	    var url = OC.generateUrl('/apps/strengthtrainer/lifts');
 	    var data = {
@@ -24,16 +24,16 @@
 		data: JSON.stringify(data)
 	    }).done(function (response) {
 		var newRow = "<tr><td>" + liftName + "</td></tr>"
-		$('#liftstable tr').eq(1).after(newRow);
+		$('#lifts-table tr').eq(1).after(newRow);
 	    });
 
 	    // clear the text box
-	    $('#liftname').val('')
+	    $('#lift-name').val('')
 	}
     }
 
     $(document).ready(function () {
-	$('#addliftbutton').click(function() {
+	$('#add-lift-button').click(function() {
 	    liftManager.add();
 	});
     });
