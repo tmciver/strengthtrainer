@@ -19,14 +19,17 @@ use \OCP\AppFramework\Controller;
 
 use \OCA\StrengthTrainer\Db\Set;
 use \OCA\StrengthTrainer\Db\SetMapper;
+use \OCA\StrengthTrainer\Db\LiftMapper;
 
 class SetsController extends Controller {
 
-    private $mapper;
+    private $setMapper;
+    private $liftMapper;
 
-    public function __construct($AppName, IRequest $request, SetMapper $setMapper) {
+    public function __construct($AppName, IRequest $request, SetMapper $setMapper, LiftMapper $liftMapper) {
         parent::__construct($AppName, $request);
-        $this->mapper = $setMapper;
+        $this->setMapper = $setMapper;
+        $this->liftMapper = $liftMapper;
     }
 
   /**
@@ -34,7 +37,8 @@ class SetsController extends Controller {
    * @NoCSRFRequired
    */
   public function index() {
-      return new TemplateResponse('strengthtrainer', 'main', ['sets' => $this->mapper->findAll()]);  // templates/main.php
+      return new TemplateResponse('strengthtrainer', 'main', ['sets' => $this->setMapper->findAll(),
+                                                              'lifts' => $this->liftMapper->findAll()]);  // templates/main.php
   }
 
   /**
@@ -52,9 +56,15 @@ class SetsController extends Controller {
    * @param string $title
    * @param string $content
    */
-  public function create($title, $content) {
-    // empty for now
-  }
+    public function create($date, $liftId, $numSets, $numReps) {
+        $set = new Set();
+        $set->setDate($date);
+        $set->setLiftId($liftId);
+        $set->setNumSets($numSets);
+        $set->setNumReps($numReps);
+
+        new DataResponse($this->setMapper->insert($set));
+    }
 
   /**
    * @NoAdminRequired

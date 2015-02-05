@@ -26,3 +26,15 @@ th {
     color: #999;
     padding: 0.5em 1.0em;
 }
+
+#set-date {
+    width: auto;
+}
+
+#num-sets, #num-reps {
+    width: 50px;
+}
+
+#add-set-button {
+    width: 100px;
+}

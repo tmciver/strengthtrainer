@@ -24,6 +24,7 @@ return [
         ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
         ['name' => 'lift#index', 'url' => '/lifts', 'verb' => 'GET'],
         ['name' => 'lift#create', 'url' => '/lifts', 'verb' => 'POST'],
-        ['name' => 'sets#index', 'url' => '/sets', 'verb' => 'GET']
+        ['name' => 'sets#index', 'url' => '/sets', 'verb' => 'GET'],
+        ['name' => 'sets#create', 'url' => '/sets', 'verb' => 'POST']
     ]
 ];

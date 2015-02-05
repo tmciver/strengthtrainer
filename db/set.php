@@ -11,19 +11,4 @@ class Set extends Entity {
     protected $numSets;
     protected $numReps;
 
-    public function getDate() {
-        return $this->date;
-    }
-
-    public function getLiftId() {
-        return $this->liftId;
-    }
-
-    public function getNumSets() {
-        return $this->numSets;
-    }
-
-    public function getNumReps() {
-        return $this->numReps;
-    }
 }
