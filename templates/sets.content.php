@@ -3,16 +3,7 @@
     <h1>Sets</h1>
     <table id="sets-table">
         <tr><th>Date</th><th>Lift ID</th><th>Number of Sets</th><th>Number of Reps</th><th></th></tr>
-        <?php foreach($_['sets'] as $set) { ?>
-            <tr>
-		<td><?php p($set->getDate()); ?></td>
-		<td><?php p($set->getLiftId()); ?></td>
-		<td><?php p($set->getNumSets()); ?></td>
-		<td><?php p($set->getNumReps()); ?></td>
-		<td></td>
-            </tr>
-        <?php } ?>
-	<tr class="last">
+	<tr>
 	    <td><input type="date" id="set-date" value="<?php echo date('Y-m-d'); ?>" /></td>
 	    <td>
 		<select id="lift-option">
@@ -23,6 +14,17 @@
 	    </td>
 	    <td><input type="text" id="num-sets"/></td>
 	    <td><input type="text" id="num-reps"/></td>
-	    <td><input type="button" value="Add" id="add-set-button"/></td>
+	    <td><input type="button" value="Add" id="add-set-button" class="st-button"/></td>
+	</tr>
+        <?php foreach($_['sets'] as $set) { ?>
+            <tr>
+		<td><?php p($set->getDate()); ?></td>
+		<td><?php p($set->getLiftId()); ?></td>
+		<td><?php p($set->getNumSets()); ?></td>
+		<td><?php p($set->getNumReps()); ?></td>
+		<td></td>
+            </tr>
+        <?php } ?>
+	
     </table>
 </div>

@@ -49,7 +49,7 @@
 	               +     "<td>" + numReps + "</td>"
 	               +     "<td></td>"
 	               + "</tr>";
-	    $('#sets-table tr:last').before(newRow);
+	    $('#sets-table tr').eq(1).after(newRow);
 	});
 
 	// clear the text box
