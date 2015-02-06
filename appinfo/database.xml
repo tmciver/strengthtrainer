@@ -48,6 +48,11 @@
                 <notnull>true</notnull>
             </field>
 	    <field>
+	      <name>weight</name>
+	      <type>integer</type>
+	      <notnull>true</notnull>
+	    </field>
+	    <field>
 	      <name>num_sets</name>
 	      <type>integer</type>
 	      <notnull>true</notnull>

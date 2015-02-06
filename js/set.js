@@ -13,6 +13,7 @@
     setManager.add = function() {
 	var date = $('#set-date').val();
 	var liftId = $('#lift-option').val();
+	var weight = $('#weight').val();
 	var numSets = $('#num-sets').val();
 	var numReps = $('#num-reps').val();
 
@@ -22,11 +23,12 @@
 	    return
 	}
 
-	// validate numSet and numReps
+	// validate numSet, numReps and weight
 	var numSetsInt = parseInt(numSets);
 	var numRepsInt = parseInt(numReps);
-	if (isNaN(numSetsInt) || isNaN(numRepsInt)) {
-	    alert("'Number of Sets' and 'Number of Reps' must be positive integers.");
+	var weightInt = parseInt(weight);
+	if (isNaN(numSetsInt) || isNaN(numRepsInt) || isNaN(weightInt)) {
+	    alert("'Number of Sets', 'Number of Reps' and 'Weight' must be positive integers.");
 	    return;
 	}
 	
@@ -34,6 +36,7 @@
 	var data = {
 	    date: date,
 	    liftId: liftId,
+	    weight: weightInt,
 	    numSets: numSetsInt,
 	    numReps: numRepsInt
 	};
@@ -45,6 +48,7 @@
 	}).done(function (response) {
 	    var newRow = "<tr><td>" + date + "</td>"
 	               +     "<td>" + liftId + "</td>"
+	               +     "<td>" + weight + "</td>"
 	               +     "<td>" + numSets + "</td>"
 	               +     "<td>" + numReps + "</td>"
 	               +     "<td></td>"
@@ -53,6 +57,7 @@
 	});
 
 	// clear the text box
+	$('#weight').val('');
 	$('#num-sets').val('');
 	$('#num-reps').val('');
     }

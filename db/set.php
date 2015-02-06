@@ -8,6 +8,7 @@ class Set extends Entity {
 
     protected $date;
     protected $liftId;
+    protected $weight;
     protected $numSets;
     protected $numReps;
 

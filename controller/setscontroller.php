@@ -56,10 +56,11 @@ class SetsController extends Controller {
    * @param string $title
    * @param string $content
    */
-    public function create($date, $liftId, $numSets, $numReps) {
+    public function create($date, $liftId, $weight, $numSets, $numReps) {
         $set = new Set();
         $set->setDate($date);
         $set->setLiftId($liftId);
+        $set->setWeight($weight);
         $set->setNumSets($numSets);
         $set->setNumReps($numReps);
 
