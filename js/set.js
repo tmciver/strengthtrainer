@@ -13,6 +13,7 @@
     setManager.add = function() {
 	var date = $('#set-date').val();
 	var liftId = $('#lift-option').val();
+	var liftName = $('#lift-option option:selected').text();
 	var weight = $('#weight').val();
 	var numSets = $('#num-sets').val();
 	var numReps = $('#num-reps').val();
@@ -47,7 +48,7 @@
 	    data: JSON.stringify(data)
 	}).done(function (response) {
 	    var newRow = "<tr><td>" + date + "</td>"
-	               +     "<td>" + liftId + "</td>"
+	               +     "<td>" + liftName + "</td>"
 	               +     "<td>" + weight + "</td>"
 	               +     "<td>" + numSets + "</td>"
 	               +     "<td>" + numReps + "</td>"

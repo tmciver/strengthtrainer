@@ -4,7 +4,7 @@
     <table id="sets-table">
         <tr>
 	    <th>Date</th>
-	    <th>Lift ID</th>
+	    <th>Lift</th>
 	    <th>Weight</th>
 	    <th>Number of Sets</th>
 	    <th>Number of Reps</th>
@@ -27,7 +27,7 @@
         <?php foreach($_['sets'] as $set) { ?>
             <tr>
 		<td><?php p($set->getDate()); ?></td>
-		<td><?php p($set->getLiftId()); ?></td>
+		<td><?php p($set->getLiftName()); ?></td>
 		<td><?php p($set->getWeight()); ?></td>
 		<td><?php p($set->getNumSets()); ?></td>
 		<td><?php p($set->getNumReps()); ?></td>

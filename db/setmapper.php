@@ -12,12 +12,35 @@ class SetMapper extends Mapper {
 
     public function find($id) {
         $sql = 'SELECT * FROM *PREFIX*strengthtrainer_set WHERE id = ?';
-        return $this->findEntity($sql, [$id]);
+        $set = $this->findEntity($sql, [$id]);
+
+        $this->addLiftName($set);
+
+        return $set;
     }
 
     public function findAll() {
         $sql = 'SELECT * FROM *PREFIX*strengthtrainer_set';
-        return $this->findEntities($sql);
+        $sets = $this->findEntities($sql);
+
+        // add the lift name to each one
+        foreach ($sets as $set) {
+            $this->addLiftName($set);
+        }
+
+        return $sets;
+    }
+
+    private function addLiftName($set) {
+        // set up SQL
+        $nameColumnName = 'name';
+        $sql = "SELECT `" . $nameColumnName . "` FROM *PREFIX*strengthtrainer_lift WHERE id = ?";
+
+        // get the name of the lift
+        $liftName = $this->findOneQuery($sql, array($set->getLiftId()))[$nameColumnName];
+
+        // add it to the set entity
+        $set->setLiftName($liftName);
     }
 
 }

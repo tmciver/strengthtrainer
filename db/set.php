@@ -12,4 +12,13 @@ class Set extends Entity {
     protected $numSets;
     protected $numReps;
 
+    private $liftName;
+
+    public function setLiftName($liftName) {
+        $this->liftName = $liftName;
+    }
+
+    public function getLiftName() {
+        return $this->liftName;
+    }
 }
