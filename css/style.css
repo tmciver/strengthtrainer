@@ -1,40 +1,24 @@
 h1 {
-    font-size: 2em;
+    font-size: 2.5em;
     padding: 0.5em;
 }
 
-table {
-    width: 100%;
-    border-collapse:collapse;
+body table {
+    font-size: 125%;
 }
 
-tr {
-    font-size: 1.3em;
-    height: 35px;
-    border-bottom: 1px solid #eee;
+table.dataTable {
+    border-collapse: collapse;
 }
 
-tr.last {
+table.dataTable thead th, table.dataTable thead td {
     border-bottom: none;
 }
 
-td {
-    padding: 0.5em 1.0em;
+table.dataTable thead tr:last-child, table.dataTable tbody tr:last-child {
+    border-bottom: 1px solid black;
 }
 
-th {
-    color: #999;
-    padding: 0.5em 1.0em;
-}
-
-#set-date {
-    width: auto;
-}
-
-#num-sets, #num-reps {
-    width: 50px;
-}
-
-input.st-button {
-    width: 100px;
+table.dataTable tbody tr {
+    border-bottom: 1px solid #eee;
 }

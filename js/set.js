@@ -47,14 +47,12 @@
 	    contentType: 'application/json',
 	    data: JSON.stringify(data)
 	}).done(function (response) {
-	    var newRow = "<tr><td>" + date + "</td>"
-	               +     "<td>" + liftName + "</td>"
-	               +     "<td>" + weight + "</td>"
-	               +     "<td>" + numSets + "</td>"
-	               +     "<td>" + numReps + "</td>"
-	               +     "<td></td>"
-	               + "</tr>";
-	    $('#sets-table tr').eq(1).after(newRow);
+	    $('#sets-table').DataTable().row.add([date,
+						 liftName,
+						 weight,
+						 numSets,
+						 numReps,
+						 ""]).draw();
 	});
 
 	// clear the text box
@@ -85,6 +83,9 @@
     $(document).ready(function () {
 	$('#add-set-button').click(function() {
 	    setManager.add();
+	});
+	$('#sets-table').dataTable({
+	    "order": [[0, "desc"]]
 	});
     });
 

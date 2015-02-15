@@ -1,3 +1,7 @@
+<?php
+\OCP\Util::addScript('strengthtrainer', 'lift');
+?>
+
 <div>
     <h1>Lifts</h1>
     <table id="lifts-table">
