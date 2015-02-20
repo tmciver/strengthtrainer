@@ -80,6 +80,20 @@
 	return i > 0;
     }
 
+    function setCreationRow() {
+	return "<tr> \
+                  <td><input type=\"date\" id=\"set-date\" /></td> \
+		  <td> \
+		    <select id=\"lift-option\"> \
+		    </select> \
+		  </td> \
+		  <td><input type=\"text\" id=\"weight\"/></td> \
+		  <td><input type=\"text\" id=\"num-sets\"/></td> \
+		  <td><input type=\"text\" id=\"num-reps\"/></td> \
+		  <td><input type=\"button\" value=\"Add\" id=\"add-set-button\" class=\"st-button\"/></td> \
+	        </tr>";
+    }
+
     $(document).ready(function () {
 	$('#add-set-button').click(function() {
 	    setManager.add();
@@ -87,6 +101,7 @@
 	$('#sets-table').dataTable({
 	    "order": [[0, "desc"]]
 	});
+	$('#sets-table thead').append(setCreationRow());
     });
 
 })({}, jQuery, OC);

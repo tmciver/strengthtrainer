@@ -17,20 +17,6 @@
 		<th>Number of Reps</th>
 		<th></th>
 	    </tr>
-	    <tr>
-		<td><input type="date" id="set-date" value="<?php echo date('Y-m-d'); ?>" /></td>
-		<td>
-		    <select id="lift-option">
-			<?php foreach($_['lifts'] as $lift) { ?>
-			    <option value="<?php p($lift->getId()); ?>"><?php p($lift->getName()); ?></option>
-			<?php } ?>
-		    </select>
-		</td>
-		<td><input type="text" id="weight"/></td>
-		<td><input type="text" id="num-sets"/></td>
-		<td><input type="text" id="num-reps"/></td>
-		<td><input type="button" value="Add" id="add-set-button" class="st-button"/></td>
-	    </tr>
 	</thead>
         <?php foreach($_['sets'] as $set) { ?>
             <tr>
