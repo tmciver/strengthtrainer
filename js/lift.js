@@ -32,10 +32,18 @@
 	}
     }
 
+    function liftCreationRow() {
+	return "<tr> \
+                  <td><input type=\"text\" id=\"lift-name\"><input type=\"button\" value=\"Add\" id=\"add-lift-button\" class=\"st-button\" /></td> \
+                </tr>";
+    }
+
     $(document).ready(function () {
 	$('#add-lift-button').click(function() {
 	    liftManager.add();
 	});
+	$('#lifts-table').dataTable();
+	$('#lifts-table thead').append(liftCreationRow());
     });
 
 })({}, jQuery, OC);
