@@ -26,11 +26,13 @@ class LiftController extends Controller {
 
     private $mapper;
     private $logger;
+    private $negotiator;
 
     public function __construct($AppName, IRequest $request, ILogger $logger, LiftMapper $liftmapper) {
         parent::__construct($AppName, $request);
         $this->mapper = $liftmapper;
         $this->logger = $logger;
+	$this->negotiator = new \Negotiation\Negotiator();
     }
 
   /**
@@ -38,7 +40,21 @@ class LiftController extends Controller {
    * @NoCSRFRequired
    */
   public function index() {
-      return new TemplateResponse('strengthtrainer', 'main', ['lifts' => $this->mapper->findAll()]);  // templates/main.php
+      // content negotiation
+      $accept = $this->request->getHeader("Accept");
+      $bestContentType = $this->negotiator->getBest($accept)->getValue();
+
+      // determine the response
+      $response;
+      if (isHtml($bestContentType) || acceptsAny($bestContentType)) {
+	  $response = new TemplateResponse('strengthtrainer', 'main', ['lifts' => $this->mapper->findAll()]);  // templates/main.php
+      } else if (isJson($bestContentType)) {
+	  $response = new DataResponse($this->mapper->findAll());
+      } else {
+	  $response = new DataResponse([], Http::STATUS_UNSUPPORTED_MEDIA_TYPE);
+      }
+
+      return $response;
   }
 
   /**
@@ -97,4 +113,16 @@ class LiftController extends Controller {
   public function destroy($id) {
     // empty for now
   }
+}
+
+function isHtml($mediaType) {
+    return $mediaType === "text/html" || $mediaType === "application/xhtml+xml";
+}
+
+function acceptsAny($mediaType) {
+    return $mediaType === "*/*";
+}
+
+function isJson($mediaType) {
+    return $mediaType === "application/json";
 }

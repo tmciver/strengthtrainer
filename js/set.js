@@ -48,11 +48,11 @@
 	    data: JSON.stringify(data)
 	}).done(function (response) {
 	    $('#sets-table').DataTable().row.add([date,
-						 liftName,
-						 weight,
-						 numSets,
-						 numReps,
-						 ""]).draw();
+						  liftName,
+						  weight,
+						  numSets,
+						  numReps,
+						  ""]).draw();
 	});
 
 	// clear the text box
@@ -80,18 +80,57 @@
 	return i > 0;
     }
 
+    function liftSelectElement() {
+	var select = $("<select></select>", {id: "lift-option"});
+	liftManager.lifts(function(lifts) {
+	    var opts = [];
+	    $.each(lifts, function (i, lift) {
+		opts.push($("<option></option>", {value: lift.id, text: lift.name}));
+	    });
+	    $("#lift-option").append(opts);
+	});
+	return select;
+    }
+
     function setCreationRow() {
-	return "<tr> \
-                  <td><input type=\"date\" id=\"set-date\" /></td> \
-		  <td> \
-		    <select id=\"lift-option\"> \
-		    </select> \
-		  </td> \
-		  <td><input type=\"text\" id=\"weight\"/></td> \
-		  <td><input type=\"text\" id=\"num-sets\"/></td> \
-		  <td><input type=\"text\" id=\"num-reps\"/></td> \
-		  <td><input type=\"button\" value=\"Add\" id=\"add-set-button\" class=\"st-button\"/></td> \
-	        </tr>";
+	var row = $("<tr></tr>");
+	
+	// create the date input field and add it to the row
+	var td = $("<td></td>");
+	var dateInput = $("<input></input>", {type: "date", id: "set-date"});
+	td.append(dateInput);
+	row.append(td);n
+
+	// create the lift drop down and add it to the row
+	td = $("<td></td>");
+	td.append(liftSelectElement());
+	row.append(td);
+
+	// create the weight text box and add it to the row
+	td = $("<td></td>");
+	var weightInput = $("<input></input>", {type: "text", id: "weight"});
+	td.append(weightInput);
+	row.append(td);
+
+	// create the sets count text box and add it to the row
+	td = $("<td></td>");
+	var setsInput = $("<input></input>", {type: "text", id: "num-sets"});
+	td.append(setsInput);
+	row.append(td);
+
+	// create the reps count text box and add it to the row
+	td = $("<td></td>");
+	var setsInput = $("<input></input>", {type: "text", id: "num-reps"});
+	td.append(setsInput);
+	row.append(td);
+
+	// create the 'Add' button and add it to the row
+	td = $("<td></td>");
+	var addButton = $("<input></input>", {type: "button", id: "add-set-button", value: "Add"});
+	td.append(addButton);
+	row.append(td);
+
+	return row;
     }
 
     $(document).ready(function () {
@@ -104,4 +143,4 @@
 	$('#sets-table thead').append(setCreationRow());
     });
 
-})({}, jQuery, OC);
+})(window.setManager = window.setManager || {}, jQuery, OC);

@@ -22,3 +22,11 @@ table.dataTable thead tr:last-child, table.dataTable tbody tr:last-child {
 table.dataTable tbody tr {
     border-bottom: 1px solid #eee;
 }
+
+#num-sets, #num-reps {
+    width: 50px;
+}
+
+#add-set-button {
+    width: 100px;
+}

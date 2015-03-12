@@ -32,6 +32,21 @@
 	}
     }
 
+    liftManager.lifts = function(callback) {
+	var url = OC.generateUrl('/apps/strengthtrainer/lifts');
+	var lifts = [];
+
+	$.ajax({
+	    url: url,
+	    type: 'GET',
+	    headers: {
+	     	Accept: "application/json"
+	    }
+	}).done(function (lifts) {
+	    callback(lifts);
+	});
+    }
+
     function liftCreationRow() {
 	return "<tr> \
                   <td><input type=\"text\" id=\"lift-name\"><input type=\"button\" value=\"Add\" id=\"add-lift-button\" class=\"st-button\" /></td> \
@@ -46,4 +61,4 @@
 	$('#lifts-table thead').append(liftCreationRow());
     });
 
-})({}, jQuery, OC);
+})(window.liftManager = window.liftManager || {}, jQuery, OC);

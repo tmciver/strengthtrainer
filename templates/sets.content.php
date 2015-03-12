@@ -1,5 +1,6 @@
 <?php
 \OCP\Util::addScript('strengthtrainer', 'jquery.dataTables.min');
+\OCP\Util::addScript('strengthtrainer', 'lift');
 \OCP\Util::addScript('strengthtrainer', 'set');
 \OCP\Util::addStyle('strengthtrainer', 'jquery.dataTables.min');
 \OCP\Util::addStyle('strengthtrainer', 'style');

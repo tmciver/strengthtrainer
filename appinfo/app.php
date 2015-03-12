@@ -11,6 +11,9 @@
 
 namespace OCA\StrengthTrainer\AppInfo;
 
+if ((@include_once __DIR__ . '/../vendor/autoload.php')===false) {
+	throw new Exception('Cannot include autoload. Did you run install dependencies using composer?');
+}
 
 \OCP\App::addNavigationEntry(array(
     // the string under which your app will be referenced in owncloud
